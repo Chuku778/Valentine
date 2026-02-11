@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day ❤️</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(135deg, #2b0a1a, #5c1a33, #b76e79);
+    background-size: 300% 300%;
+    animation: gradientMove 8s ease infinite;
+    color:white;
+}
+
+/* Background animation */
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius:25px;
+    padding:40px 30px;
+    width:90%;
+    max-width:420px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+    margin-bottom:15px;
+    color:#f8e7b0;
+}
+
+.message{
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:25px;
+    opacity:0;
+    animation: textAppear 3s ease forwards 1.5s;
+}
+
+@keyframes textAppear{
+    to{opacity:1;}
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background: linear-gradient(45deg, #d4af37, #f8e7b0);
+    color:#3a1c1c;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    color:#f8e7b0;
+    font-size:20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-110vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* Responsive */
+@media(max-width:480px){
+    .card{
+        padding:30px 20px;
+    }
+    h1{
+        font-size:22px;
+    }
+    .message{
+        font-size:14px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Happy Valentine's Day ❤️</h1>
+    <p class="message">
+        On this beautiful day of love,  
+        I just want you to know how special you are to me.  
+        You bring warmth to my heart, peace to my mind,  
+        and joy to my everyday life.  
+        Loving you feels effortless and magical.  
+        Today and always, you are cherished.
+    </p>
+    <button onclick="playMusic()">Play Our Song 🎵</button>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="./Christina_Perri_-_A_Thousand_Years_CeeNaija.com_.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Music Play */
+function playMusic(){
+    document.getElementById("bgMusic").play();
+}
+
+/* Create Floating Hearts */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart, 500);
+
+</script>
+
+</body>
+</html>
+
+</html>
