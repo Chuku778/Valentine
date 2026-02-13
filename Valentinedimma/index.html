@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day Dimma ❤️</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(135deg, #5e0b15, #a4133c, #ff4d6d);
+    background-size:300% 300%;
+    animation: gradientMove 10s ease infinite;
+    color:white;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    border-radius:25px;
+    padding:40px 30px;
+    width:90%;
+    max-width:420px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+    margin-bottom:15px;
+    color:#ffd6e0;
+}
+
+.message{
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:25px;
+    animation: fadeText 3s ease forwards 1.5s;
+    opacity:0;
+}
+
+@keyframes fadeText{
+    to{opacity:1;}
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:30px;
+    background: linear-gradient(45deg, #ffd6e0, #ff8fab);
+    color:#5e0b15;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    font-size:20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-110vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* Responsive */
+@media(max-width:480px){
+    .card{
+        padding:30px 20px;
+    }
+    h1{
+        font-size:22px;
+    }
+    .message{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Happy Valentine's Day Dimma ❤️</h1>
+
+    <p class="message">
+        My dearest Dimma, <br><br>
+        You are not just my sister, you are my safe place, 
+        my biggest cheerleader, and my forever friend.  
+        Your kindness, strength, and beautiful heart 
+        make this world brighter every single day. <br><br>
+        On this Valentine’s Day, I celebrate the love we share — 
+        pure, strong, and unbreakable.  
+        I love you always and forever 💕
+        Paddy mi!!!!
+    </p>
+
+    <button onclick="toggleMusic()" id="musicBtn">▶ Play Music</button>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="./CKay-Love-Nwantinti-[TrendyBeatz.com].mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+
+function toggleMusic(){
+    if(music.paused){
+        music.play();
+        btn.innerHTML = "⏸ Pause Music";
+    } else {
+        music.pause();
+        btn.innerHTML = "▶ Play Music";
+    }
+}
+
+/* Floating Hearts */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
